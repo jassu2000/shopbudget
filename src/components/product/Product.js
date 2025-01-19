@@ -10,9 +10,10 @@ import { FaCogs } from 'react-icons/fa'
 const Product = () => {
 
     const{data, isLoading} = useFetchCollection("products");
+    console.log(`Data : ${data} `);
     const [showFilter, setShowFilter] = useState(false);
     const products = useSelector(selectProducts);
-    console.log(products);
+    console.log(`Products:  ${products}`);
     const dispatch = useDispatch()
   
     useEffect(() =>{

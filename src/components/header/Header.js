@@ -9,7 +9,7 @@ import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { SET_ACTIVE_USER, REMOVE_ACTIVE_USER } from '../../redux/slice/authSlice';
 import ShowOnLogin, { ShowOnLogout } from '../hiddenLink/hiddenLink';
-import AdminOnlyRoute, { AdminOnlyLink } from '../adminOnlyRoute/AdminOnlyRoute';
+import {AdminOnlyLink} from '../adminOnlyRoute/AdminOnlyRoute';
 import { CALCULATE_TOTAL_QUANTITY, selectCartTotalQuantity } from '../../redux/slice/cartSlice';
 
 const logo = (
@@ -20,7 +20,8 @@ const logo = (
             </h2>
           </Link>
         </div>
-)
+);
+const activeLink = ({ isActive }) => (isActive ? `${styles.active}` : "");
 
 const Header = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -30,12 +31,12 @@ const Header = () => {
   const cartTotalQuantity=useSelector(selectCartTotalQuantity);
 
   useEffect(()=>{
-    dispatch(CALCULATE_TOTAL_QUANTITY())
+    dispatch(CALCULATE_TOTAL_QUANTITY());
   },[])
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const fixNavBar = () =>{
     if(window.scrollY > 50){
       setScrollPage(true);
@@ -52,7 +53,8 @@ const Header = () => {
       if (user) {
         console.log(user);
         if(user.displayName == null){
-          const u1 = user.email.substring(0, user.email.indexOf("@"));
+          // const u1 = user.email.substring(0, user.email.indexOf("@"));
+          const u1 = user.email.slice(0, -10);
           const uName = u1.charAt(0).toUpperCase() + u1.slice(1);
           console.log(uName);
           setdisplayName(uName);
@@ -67,14 +69,12 @@ const Header = () => {
           email:user.email,
           userName:user.displayName ? user.displayName: displayName,
           userID:user.uid,
-        }))
-        
+        }))  
       } else {
         setdisplayName("");
         dispatch(REMOVE_ACTIVE_USER());
       }
     });
-
   }, [dispatch,displayName])
   
 
@@ -87,7 +87,8 @@ const Header = () => {
   }
 
   const logoutUser = () => {
-    signOut(auth).then(() => {
+    signOut(auth)
+    .then(() => {
       toast.success("logout successful");
       navigate("/")
     })
@@ -105,10 +106,6 @@ const Header = () => {
     </span>
   );
 
-
-  const activeLink = ({isActive}) => 
-  (isActive ? `${styles.active}` : "")
-
   return (
     <header className={scrollPage ? `${styles.fixed}` : null}>
       <div className={styles.header}>
@@ -124,11 +121,12 @@ const Header = () => {
               {logo}
               <FaTimes size={22} color='#fff'onClick={hideMenu}/>
             </li>
-            
             <li>
               <AdminOnlyLink>
                 <Link to="/admin/home">
-                  <button className='--btn --btn-primary'>Admin</button>
+                <button className='--btn --btn-primary'>
+                    Admin
+                </button>
                 </Link>
               </AdminOnlyLink>
             </li>

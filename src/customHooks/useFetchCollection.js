@@ -12,17 +12,18 @@ const useFetchCollection = (collectionName) => {
     try {
       const docRef = collection(db, collectionName);
       console.log(`Docref: ${docRef}`);
-      const q = query(docRef, orderBy("orderConfig.createdAt", "desc"));
+      const q = query(docRef);
       console.log(`Q: ${q}`);
       onSnapshot(q, (snapshot) => {
-        console.log(`Snapshot : ${snapshot}`)
+        console.log(`Snapshot : ${JSON.stringify(snapshot)}`)
         console.log(`Docs : ${snapshot.docs}`);
         const allData = snapshot.docs.map((doc) => ({
           id: doc.id,
           ...doc.data(),
         }));
-        console.log(allData);
+        console.log(`All data: ${allData}`);
         setData(allData);
+        console.log(`data: ${data}`)
         setIsLoading(false);
       });
     } catch (error) {
