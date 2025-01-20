@@ -28,7 +28,7 @@ const ProductList = ({products}) => {
   const dispatch = useDispatch()
 
   useEffect(() =>{
-    dispatch(FILTER_BY_SEARCH({products:products, search: search}))
+    dispatch(FILTER_BY_SEARCH({products:products, search:search}))
   },[dispatch, products, search])
 
   useEffect(() =>{
