@@ -8,7 +8,6 @@ import { GET_PRICE_RANGE, selectProducts, STORE_PRODUCTS } from '../../redux/sli
 import spinnerImg from "../../assets/spinner.jpg"
 import { FaCogs } from 'react-icons/fa'
 const Product = () => {
-
     const{data, isLoading} = useFetchCollection("products");
     const [showFilter, setShowFilter] = useState(false);
     const products = useSelector(selectProducts);

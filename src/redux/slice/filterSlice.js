@@ -45,8 +45,7 @@ const filterSlice = createSlice({
                 return b.name.localeCompare(a.name);
             })
         }
-
-        state.filteredProducts = tempProducts
+        state.filteredProducts = tempProducts;
     },
     FILTER_BY_CATEGORY(state,action){
         console.log(action.payload)

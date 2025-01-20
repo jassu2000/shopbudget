@@ -62,7 +62,7 @@ const CheckoutForm=()=> {
       createdAt: Timestamp.now().toDate()
     }
     try{
-      addDoc(collection(db, "orders"), {orderConfig});
+      addDoc(collection(db, "orders"), orderConfig);
       toast.success("order saved");
       dispatch(CLEAR_CART());
       navigate("/checkout-success")

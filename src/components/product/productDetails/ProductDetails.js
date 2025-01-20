@@ -35,7 +35,6 @@ const ProductDetails = () => {
   }
 
   const getProduct = async() =>{
-    
     const docRef = doc(db, "products", id);
     const docSnap = await getDoc(docRef);
 

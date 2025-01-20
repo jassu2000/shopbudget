@@ -12,7 +12,8 @@ const useFetchCollection = (collectionName) => {
     try {
       const docRef = collection(db, collectionName);
       console.log(`Docref: ${docRef}`);
-      const q = query(docRef, orderBy("orderConfig.createdAt", "desc"));
+      // const q = query(docRef, orderBy("orderConfig.createdAt", "desc"));
+      const q = query(docRef);
       console.log(`Q: ${q}`);
       onSnapshot(q, (snapshot) => {
         console.log(`Snapshot : ${snapshot}`)
