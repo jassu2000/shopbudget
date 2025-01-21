@@ -24,7 +24,7 @@ const OrderHistory = () => {
   console.log(`user ID ${userID}`);
   console.log(` orders: ${JSON.stringify(orders)}`);
 
-   const filteredOrders = orders.filter((order) => order.orderConfig.userId == userID);
+   const filteredOrders = orders.filter((order) => order.userId == userID);
 
    console.log(`filteredOrders: ${JSON.stringify(filteredOrders)}`);
 
@@ -55,7 +55,7 @@ const OrderHistory = () => {
                 <tbody>
                   {filteredOrders.map((order, index) => {
                     const {id} = order;
-                    const {orderDate,orderTime,orderAmount,orderStatus} = order.orderConfig;
+                    const {orderDate,orderTime,orderAmount,orderStatus} = order;
                     return (
                       <tr key={id} onClick={() => handleClick(id)}>
                         <td>{index + 1}</td>
