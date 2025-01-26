@@ -11,6 +11,7 @@ import { db } from '../../firebase/config';
 import { toast } from 'react-toastify';
 import useFetchDocument from '../../customHooks/UseFetchDocument';
 import spinnerImg from "../../assets/spinner.jpg";
+import useFetchCollection from '../../customHooks/useFetchCollection';
 const ReviewProducts = () => {
   const [rate, setRate] = useState(0);
   const [review, setReview] = useState("");
@@ -70,8 +71,7 @@ const ReviewProducts = () => {
                 <button type='submit' className='--btn --btn-primary'>Submit Review</button>
             </form>
           </Card>
-        
-      </div>
+         </div>
     </section>
   );
 };
