@@ -134,7 +134,7 @@ const OrderDetails = () => {
           </>
           )}
         
-        <ChangeOrderStatus />
+        <ChangeOrderStatus order={order} id={id} />
 
         </div>
       </>
