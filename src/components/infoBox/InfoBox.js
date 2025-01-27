@@ -7,7 +7,7 @@ const InfoBox = ({cardClass, title, count,icon}) => {
       <Card className={cardClass}>
         <h4>{title}</h4>
         <span>
-            <h3>${count}</h3>
+            <h3>{count}</h3>
             {icon}
         </span>
       </Card>
