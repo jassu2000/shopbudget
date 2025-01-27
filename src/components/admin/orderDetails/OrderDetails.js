@@ -3,6 +3,7 @@ import styles from "./OrderDetails.module.scss";
 import useFetchDocument from '../../../customHooks/UseFetchDocument';
 import { Link, useParams } from 'react-router-dom';
 import spinnerImg from "../../../assets/spinner.jpg";
+import ChangeOrderStatus from '../changeOrderStatus/ChangeOrderStatus';
 const OrderDetails = () => {
     const [order, setOrder] = useState(null);
     const {id} = useParams();
@@ -10,7 +11,6 @@ const OrderDetails = () => {
     console.log(`document  : ${document}`);
     
     useEffect(()=>{
-      console.log(`order  009090909`);
       setOrder(document);
     },[document]);
     
@@ -47,7 +47,20 @@ const OrderDetails = () => {
               <b>Order Status</b> {order.orderStatus}
   
             </p>
+            <p>
   
+                <b>Shipping Address</b> 
+                <br />
+                Address: {order.shippingAddress.line1},
+                {order.shippingAddress.line2},
+                {order.shippingAddress.city}
+                <br />
+                <b>State: </b>{order.shippingAddress.state}
+                <br />
+                <b>Country: </b>{order.shippingAddress.country}
+
+            </p>
+
             <br />
   
             <table>
@@ -65,9 +78,7 @@ const OrderDetails = () => {
                   <th>Quantity</th>
   
                   <th>Total</th>
-  
-                  <th>Action</th>
-  
+    
                 </tr>
   
               </thead>
@@ -114,20 +125,7 @@ const OrderDetails = () => {
   
                       <td>{(price * cartQuantity).toFixed(2)}</td>
   
-                      <td className={styles.icons}>
-  
-                        <Link to={`/review-product/${id}`}>
-  
-                          <button className="--btn --btn-primary">
-  
-                            Review Product
-  
-                          </button>
-  
-                        </Link>
-  
-                      </td>
-  
+                      
                     </tr>
                   );
                 })}
@@ -135,7 +133,9 @@ const OrderDetails = () => {
             </table>
           </>
           )}
-  
+        
+        <ChangeOrderStatus />
+
         </div>
       </>
     );
