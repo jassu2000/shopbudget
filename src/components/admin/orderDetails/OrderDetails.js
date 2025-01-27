@@ -20,7 +20,7 @@ const OrderDetails = () => {
         <div className={styles.table}>
           <h2>Order Details</h2>
           <div>
-            <Link to="/order-history">
+            <Link to="/admin/orders">
               &larr; Back To Orders
             </Link>
           </div>

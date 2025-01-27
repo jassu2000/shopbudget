@@ -21,7 +21,7 @@ const OrderDetails = () => {
       <div className={`container ${styles.table}`}>
         <h2>Order Details</h2>
         <div>
-          <Link to="/order-history">
+          <Link to="admin/order">
             &larr; Back To Orders
           </Link>
         </div>
